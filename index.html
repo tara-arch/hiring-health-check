@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Inclusive Hiring Health Check | Equity Activations&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="root"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script type="text/babel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const { useState } = React;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const CheckCircle2 = ({ className }) =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const AlertCircle = ({ className }) =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const XCircle = ({ className }) =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function InclusiveHiringHealthCheck() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [responses, setResponses] = useState({});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [showEmailCapture, setShowEmailCapture] = useState(false);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [showResults, setShowResults] = useState(false);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [formData, setFormData] = useState({</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: '',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>email: '',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>company: ''</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [isSubmitting, setIsSubmitting] = useState(false);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxFIJuyRWuu7g3sAL-2ADtxplMsStRZ79Ue0F4lFk90stdnXgZ8sXeFjMC1nR7icEFPOQ/exec';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const questions = [</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>category: "Attraction",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>items: [</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ id: 1, text: "Do your job descriptions list responsibilities in order of importance, with the most critical tasks first?" },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ id: 2, text: "Have you ever audited your job postings for biased language?" }</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>]</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>category: "Selection",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>items: [</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ id: 3, text: "Have you walked through your own application process from a candidate's perspective in the last 6 months?" },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ id: 4, text: "Does each interview panel member know their specific role and what they're evaluating for?" },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ id: 5, text: "Do all candidates for the same role get asked the same core interview questions?" },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ id: 6, text: "Has the hiring manager and the interview panel team undergone training to increase candidate assessment quality?" }</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>]</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const handleResponse = (id, value) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setResponses({ ...responses, [id]: value });</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const calculateScore = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const yesCount = Object.values(responses).filter(v =&gt; v === 'yes').length;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const totalQuestions = 6;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return { yesCount, totalQuestions };</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const getResultsTier = (yesCount) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (yesCount &gt;= 5) return 'green';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (yesCount &gt;= 3) return 'yellow';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return 'red';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const handleShowEmailCapture = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (Object.keys(responses).length === 6) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setShowEmailCapture(true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const handleFormChange = (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setFormData({ ...formData, [e.target.name]: e.target.value });</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const handleSubmitEmail = async () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!formData.name || !formData.email || !formData.company) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>alert('Please fill in all fields');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>setIsSubmitting(true);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const { yesCount } = calculateScore();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const tier = getResultsTier(yesCount);</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const submissionData = {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>timestamp: new Date().toISOString(),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>name: formData.name,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>email: formData.email,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>company: formData.company,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>score: `${yesCount}/6`,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>tier: tier.charAt(0).toUpperCase() + tier.slice(1),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q1: responses[1],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q2: responses[2],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q3: responses[3],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q4: responses[4],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q5: responses[5],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q6: responses[6]</p>
+<p class="p1"><span class="Apple-converted-space">                </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>await fetch(GOOGLE_SHEETS_URL, {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>method: 'POST',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>mode: 'no-cors',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>headers: {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>'Content-Type': 'application/json',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>body: JSON.stringify(submissionData)</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setShowResults(true);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setShowEmailCapture(false);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} catch (error) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>console.error('Error submitting:', error);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setShowResults(true);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setShowEmailCapture(false);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} finally {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setIsSubmitting(false);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const { yesCount, totalQuestions } = calculateScore();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const tier = getResultsTier(yesCount);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const resultContent = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>red: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>icon: XCircle,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>color: "text-fuchsia-700",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>bgColor: "bg-fuchsia-50",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>borderColor: "border-fuchsia-300",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Critical Gaps Detected",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>description: "Your current hiring process has significant equity gaps that are likely costing you top talent and impacting your team's diversity. These gaps also increase your risk of bias-related issues and lower retention rates among diverse hires.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>impact: "What this means: You're probably losing qualified candidates before they even apply, making inconsistent hiring decisions, and struggling with early turnover—especially among underrepresented groups."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>yellow: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>icon: AlertCircle,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>color: "text-fuchsia-500",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>bgColor: "bg-fuchsia-100",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>borderColor: "border-fuchsia-200",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Good Foundation, Strategic Gaps",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>description: "You have some inclusive practices in place, but you're missing key strategic elements that would make your hiring process truly equitable. These gaps mean you're not maximizing your ability to attract and retain diverse talent.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>impact: "What this means: You're doing better than most, but inconsistencies in your process are creating blind spots. Some great candidates are slipping through, and you're not fully leveraging the business benefits of inclusive hiring."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>green: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>icon: CheckCircle2,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>color: "text-fuchsia-600",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>bgColor: "bg-fuchsia-50",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>borderColor: "border-fuchsia-200",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Strong Inclusive Practices",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>description: "Your hiring process demonstrates a solid commitment to equity and inclusion. You're doing many things right and likely seeing the benefits in your talent quality and retention.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>impact: "What to watch for: Even strong processes need regular auditing and evolution. As your company grows and the talent landscape shifts, maintaining this excellence requires ongoing strategic attention and measurement."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const currentResult = resultContent[tier];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const ResultIcon = currentResult?.icon;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>return (</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="max-w-4xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="bg-white rounded-lg shadow-sm p-8 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div className="mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h1 className="text-3xl font-bold text-slate-900 mb-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>The Inclusive Hiring Health Check</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p className="text-lg text-slate-600 mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>6 Questions That Reveal What's Really Happening in Your Recruitment Process</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div className="bg-blue-50 border border-blue-200 rounded-lg p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;p className="text-sm text-slate-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;strong&gt;Why this matters:&lt;/strong&gt; Inclusive hiring isn't just about compliance—it's about building stronger teams, reducing costly turnover, and accessing the full talent pool. This quick assessment helps you identify where your process is working and where strategic gaps might be costing you.</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{!showEmailCapture &amp;&amp; !showResults &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>{questions.map((section, idx) =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;div key={idx} className="bg-white rounded-lg shadow-sm p-8 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;h2 className="text-xl font-semibold text-slate-900 mb-6 pb-3 border-b border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>{section.category}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;div className="space-y-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>{section.items.map((question) =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>&lt;div key={question.id} className="border-l-4 border-fuchsia-300 pl-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                    </span>&lt;p className="text-slate-800 mb-3 font-medium"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                        </span>{question.id}. {question.text}</p>
+<p class="p1"><span class="Apple-converted-space">                                                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                    </span>&lt;div className="flex gap-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                        </span>&lt;label className="flex items-center cursor-pointer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                            </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>type="radio"</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>name={`q${question.id}`}</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>value="yes"</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>checked={responses[question.id] === 'yes'}</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>onChange={(e) =&gt; handleResponse(question.id, e.target.value)}</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>className="mr-2 w-4 h-4 accent-fuchsia-600"</p>
+<p class="p1"><span class="Apple-converted-space">                                                            </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                            </span>&lt;span className="text-slate-700"&gt;Yes&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                        </span>&lt;label className="flex items-center cursor-pointer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                            </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>type="radio"</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>name={`q${question.id}`}</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>value="no"</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>checked={responses[question.id] === 'no'}</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>onChange={(e) =&gt; handleResponse(question.id, e.target.value)}</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>className="mr-2 w-4 h-4 accent-fuchsia-600"</p>
+<p class="p1"><span class="Apple-converted-space">                                                            </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                            </span>&lt;span className="text-slate-700"&gt;No&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                        </span>&lt;label className="flex items-center cursor-pointer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                            </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>type="radio"</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>name={`q${question.id}`}</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>value="unsure"</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>checked={responses[question.id] === 'unsure'}</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>onChange={(e) =&gt; handleResponse(question.id, e.target.value)}</p>
+<p class="p1"><span class="Apple-converted-space">                                                                </span>className="mr-2 w-4 h-4 accent-fuchsia-600"</p>
+<p class="p1"><span class="Apple-converted-space">                                                            </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                            </span>&lt;span className="text-slate-700"&gt;Not Sure&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>))}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>))}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div className="bg-white rounded-lg shadow-sm p-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>onClick={handleShowEmailCapture}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>disabled={Object.keys(responses).length !== 6}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>className={`w-full py-4 px-6 rounded-lg font-semibold text-lg transition-all ${</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>Object.keys(responses).length === 6</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>? 'bg-fuchsia-600 text-white hover:bg-fuchsia-700 cursor-pointer'</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>: 'bg-slate-200 text-slate-400 cursor-not-allowed'</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>}`}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>{Object.keys(responses).length === 6</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>? 'See Your Results'</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>: `Answer All Questions (${Object.keys(responses).length}/6)`}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>)}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{showEmailCapture &amp;&amp; !showResults &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div className="bg-white rounded-lg shadow-lg p-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div className="max-w-2xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;h2 className="text-2xl font-bold text-slate-900 mb-2 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>Find out how your hiring process can level up</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;p className="text-slate-600 mb-8 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>Enter your information to see your personalized results</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;div className="space-y-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>Name *</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>type="text"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>id="name"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>name="name"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>value={formData.name}</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>onChange={handleFormChange}</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>placeholder="Your full name"</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>Email *</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>type="email"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>id="email"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>name="email"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>value={formData.email}</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>onChange={handleFormChange}</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>placeholder="you@company.com"</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>Company Name *</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>type="text"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>id="company"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>name="company"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>value={formData.company}</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>onChange={handleFormChange}</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500"</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>placeholder="Your company"</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>onClick={handleSubmitEmail}</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>disabled={isSubmitting}</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>className={`w-full py-4 px-6 rounded-lg font-semibold text-lg transition-all ${</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>isSubmitting</p>
+<p class="p1"><span class="Apple-converted-space">                                                    </span>? 'bg-slate-400 cursor-not-allowed'</p>
+<p class="p1"><span class="Apple-converted-space">                                                    </span>: 'bg-fuchsia-600 text-white hover:bg-fuchsia-700 cursor-pointer'</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>}`}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>{isSubmitting ? 'Loading...' : 'Get My Results'}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;p className="text-xs text-slate-500 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>We respect your privacy. Your information will only be used to send you your results and occasional insights about inclusive hiring.</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>)}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{showResults &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div className={`bg-white rounded-lg shadow-sm p-8 mb-6 border-2 ${currentResult.borderColor}`}&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;div className="flex items-start gap-4 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;ResultIcon className={`w-12 h-12 ${currentResult.color} flex-shrink-0`} /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;div className="flex-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;h2 className="text-2xl font-bold text-slate-900 mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>Your Results: {currentResult.title}</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;p className="text-lg text-slate-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                                </span>You answered "Yes" to {yesCount} out of {totalQuestions} questions</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;div className={`${currentResult.bgColor} rounded-lg p-6 mb-6`}&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;p className="text-slate-800 mb-4 leading-relaxed"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>{currentResult.description}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;p className="text-slate-800 leading-relaxed"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                            </span>&lt;strong&gt;{currentResult.impact}&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div className="bg-gradient-to-r from-fuchsia-600 to-fuchsia-700 rounded-lg shadow-lg p-8 text-white"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;h3 className="text-2xl font-bold mb-4"&gt;Ready to Turn Insights Into Action?&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;p className="text-lg mb-6 text-fuchsia-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>You've identified where your hiring process stands. Now let's build a recruitment strategy that actually works—one that attracts top talent, builds community, and drives business results.</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;p className="text-fuchsia-50 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>At Equity Activations, we design inclusive hiring strategies that go beyond checklists to create measurable outcomes. From talent acquisition that builds brand loyalty to integration practices that drive retention, we help you build people strategies for business success.</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;a</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>href="https://www.equityactivations.com"</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>className="inline-block bg-white text-fuchsia-600 px-8 py-4 rounded-lg font-semibold hover:bg-fuchsia-50 transition-colors"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>Let's Talk About Your Hiring Strategy</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div className="mt-6 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;p className="text-slate-600 text-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>Equity Activations | www.equityactivations.com</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>)}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const root = ReactDOM.createRoot(document.getElementById('root'));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>root.render(&lt;InclusiveHiringHealthCheck /&gt;);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
